@@ -121,28 +121,28 @@ def process_command(command):
                 for i in range(1,len(parameters)):
                         line = parameters[i].split('=')
                         # sellcountry=<alpha2>
-                        if line[0] == 'sellcountry':
+                        if line[0] == 'sellcountry' and len(line)>1:
                                 if line[1] == '':
                                         print('Command not recognized: {}'.format(command))
                                         return []
                                 else:
                                         statement += 'WHERE c1.Alpha2 = "{}"\n'.format(line[1])
                         # sourcecountry=<alpha2>
-                        elif line[0] == 'sourcecountry':
+                        elif line[0] == 'sourcecountry'and len(line)>1:
                                 if line[1] == '':
                                         print('Command not recognized: {}'.format(command))
                                         return []
                                 else:
                                         statement += 'WHERE c2.Alpha2 = "{}"\n'.format(line[1])
                         # sellregion=<name>
-                        elif line[0] == 'sellregion':
+                        elif line[0] == 'sellregion' and len(line)>1:
                                 if line[1] == '':
                                         print('Command not recognized: {}'.format(command))
                                         return []
                                 else:
                                         statement += 'WHERE c1.Region = "{}"\n'.format(line[1])
                         # sourceregion=<name>
-                        elif line[0] == 'sourceregion':
+                        elif line[0] == 'sourceregion' and len(line)>1:
                                 if line[1] == '':
                                         print('Command not recognized: {}'.format(command))
                                         return []
@@ -156,10 +156,10 @@ def process_command(command):
                                 state_order = 'ORDER BY Rating '
                                 flag_order = True
                         # top|bottom
-                        elif line[0] == 'bottom':
+                        elif line[0] == 'bottom' and len(line)>1:
                                 state_limit= '\nLIMIT {}'.format(line[1])
                                 flag_limit = True
-                        elif line[0] == 'top':
+                        elif line[0] == 'top' and len(line)>1:
                                 state_limit = 'DESC\nLIMIT {}'.format(line[1])
                                 flag_limit = True
                         else:
@@ -191,14 +191,14 @@ def process_command(command):
                 for i in range(1,len(parameters)):
                         line = parameters[i].split('=')
                         # country=<alpha2>
-                        if line[0] == 'country':
+                        if line[0] == 'country' and len(line)>1:
                                 if line[1] == '':
                                         print('Command not recognized: {}'.format(command))
                                         return []
                                 else:
                                         statement += 'WHERE c.Alpha2 = "{}"\n'.format(line[1])
                         # region=<name>
-                        elif line[0] == 'region':
+                        elif line[0] == 'region' and len(line)>1:
                                 if line[1] == '':
                                         print('Command not recognized: {}'.format(command))
                                         return []
@@ -218,10 +218,10 @@ def process_command(command):
                                 flag_order = True
                                 state_select += 'COUNT(*) '
                         # top|bottom
-                        elif line[0] == 'bottom':
+                        elif line[0] == 'bottom' and len(line)>1:
                                 state_limit= '\nLIMIT {}'.format(line[1])
                                 flag_limit = True
-                        elif line[0] == 'top':
+                        elif line[0] == 'top' and len(line)>1:
                                 state_limit = 'DESC\nLIMIT {}'.format(line[1])
                                 flag_limit = True
                         else:
@@ -256,14 +256,14 @@ def process_command(command):
                 for i in range(1,len(parameters)):
                         line = parameters[i].split('=')
                         # region=<name>
-                        if line[0] == 'region':
+                        if line[0] == 'region' and len(line)>1:
                                 if line[1] == '':
                                         print('Command not recognized: {}'.format(command))
                                         return []
                                 else:
                                         state_group = '\nWHERE c.Region = "{}"\n'.format(line[1]) + state_group
                         # sellers|sources:
-                        elif line[0] == 'sellers':
+                        elif line[0] == 'sellers' :
                                 statement += 'LEFT JOIN Countries AS c ON Bars.CompanyLocationId = c.Id'
                                 flag_country = True
                         elif line[0] == 'sources':
@@ -283,10 +283,10 @@ def process_command(command):
                                 flag_order = True
                                 state_select += 'COUNT(*) '
                         # top|bottom
-                        elif line[0] == 'bottom':
+                        elif line[0] == 'bottom' and len(line)>1:
                                 state_limit= '\nLIMIT {}'.format(line[1])
                                 flag_limit = True
-                        elif line[0] == 'top':
+                        elif line[0] == 'top' and len(line)>1:
                                 state_limit = 'DESC\nLIMIT {}'.format(line[1])
                                 flag_limit = True
                         else:
@@ -341,10 +341,10 @@ def process_command(command):
                                 flag_order = True
                                 state_select += 'COUNT(*) '
                         # top|bottom
-                        elif line[0] == 'bottom':
+                        elif line[0] == 'bottom' and len(line)>1:
                                 state_limit= '\nLIMIT {}'.format(line[1])
                                 flag_limit = True
-                        elif line[0] == 'top':
+                        elif line[0] == 'top' and len(line)>1:
                                 state_limit = 'DESC\nLIMIT {}'.format(line[1])
                                 flag_limit = True
                         else:
